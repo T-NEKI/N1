@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std;
 
-// Функция для проверки високосного года
 bool isLeapYear(int year) {
     if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
         return true;
@@ -66,3 +65,88 @@ int main()
 
     return 0;
 }
+//------------------------------------------------------------------------------------------------------------------------------------
+
+#include <iostream>
+using namespace std;
+
+double calculateAverage(int arr[], int size) {
+    if (size == 0) return 0; 
+
+    int sum = 0;
+    for (int i = 0; i < size; ++i) {
+        sum += arr[i];
+    }
+
+    return static_cast<double>(sum) / size;
+}
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    int size;
+    cout << "Введите количество элементов в массиве: ";
+    cin >> size;
+
+    int* arr = new int[size];
+
+    cout << "Введите элементы массива: ";
+    for (int i = 0; i < size; ++i) {
+        cin >> arr[i];
+    }
+
+    double average = calculateAverage(arr, size);
+    cout << "Среднее арифметическое элементов массива: " << average << endl;
+
+    delete[] arr;
+}
+
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+#include <iostream>
+using namespace std;
+
+void countElements(const int arr[], int size, int& positiveCount, int& negativeCount, int& zeroCount) {
+    positiveCount = 0;
+    negativeCount = 0;
+    zeroCount = 0;
+
+    for (int i = 0; i < size; ++i) {
+        if (arr[i] > 0) {
+            positiveCount++;
+        }
+        else if (arr[i] < 0) {
+            negativeCount++;
+        }
+        else { 
+            zeroCount++;
+        }
+    }
+}
+
+int main() {
+    const int size = 8;
+    int arr[size] = { 1, -2, 0, 4, -5, 0, 3, -1 };
+    int positiveCount, negativeCount, zeroCount;
+
+   
+    countElements(arr, size, positiveCount, negativeCount, zeroCount);
+
+
+    cout << "Положительных: " << positiveCount << endl;
+    cout << "Отрицательных: " << negativeCount << endl;
+    cout << "Нулевых: " << zeroCount << endl;
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
